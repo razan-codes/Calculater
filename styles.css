@@ -1,0 +1,197 @@
+/* ================== قاعدة متغيّرات عامّة ================== */
+:root {
+  --bg: #121212;
+  --fg: #e8eaed;
+  --muted: #9aa0a6;
+
+  --card: #1b1b1b;
+  --btn: #262626;
+  --btn-fg: var(--fg);
+
+  --radius: 18px;
+  --shadow-1: 0 20px 60px rgba(0,0,0,.35);
+  --border-1: 1px solid rgba(255,255,255,.06);
+
+  --accent: #5b8cff;
+  --op: #3a314a;
+  --danger: #6d2b2b;
+
+  --display-bg: #0e0e0e;
+  --glow: transparent;
+}
+
+/* ================== ثيم 1: Glass ================== */
+.theme-glass {
+  --bg: linear-gradient(120deg, #0e0f16, #111421 60%, #0f0f10);
+  --card: rgba(255,255,255,.08);
+  --btn: rgba(255,255,255,.1);
+  --display-bg: rgba(0,0,0,.35);
+  --border-1: 1px solid rgba(255,255,255,.18);
+  --shadow-1: 0 24px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.08);
+  --accent: #7bb1ff;
+  --op: rgba(160,140,200,.22);
+  --danger: rgba(255,80,80,.18);
+  --glow: radial-gradient(600px 200px at 70% -10%, rgba(91,140,255,.25), transparent 60%);
+  backdrop-filter: blur(10px);
+}
+
+/* ================== ثيم 2: Neumorph ================== */
+.theme-neumorph {
+  --bg: #e9edf3;
+  --fg: #1d2430;
+  --muted: #5b6676;
+  --card: #eef2f8;
+  --btn: #eef2f8;
+  --display-bg: #f7f9fc;
+  --border-1: 1px solid rgba(0,0,0,.04);
+  --shadow-1: 12px 12px 24px rgba(0,0,0,.08), -12px -12px 24px rgba(255,255,255,.9);
+  --accent: #3f51b5;
+  --op: #e6e9f2;
+  --danger: #ffebee;
+}
+
+/* ================== ثيم 3: Neon ================== */
+.theme-neon {
+  --bg: radial-gradient(900px 400px at 80% -10%, #160f1f, #0b0b0b 60%);
+  --card: #0e0e12;
+  --btn: #15151b;
+  --display-bg: #0a0a0c;
+  --border-1: 1px solid rgba(98,0,234,.35);
+  --shadow-1: 0 0 0 1px rgba(98,0,234,.3), 0 30px 80px rgba(98,0,234,.18);
+  --accent: #bb86fc;
+  --op: #1b1330;
+  --danger: #2a0f14;
+  --glow: radial-gradient(500px 220px at 80% -10%, rgba(187,134,252,.25), transparent 60%);
+}
+
+/* ================== Reset & أساسيات ================== */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Kufi Arabic", sans-serif;
+  background: var(--bg);
+  background-attachment: fixed;
+  display: grid;
+  place-items: center;
+  color: var(--fg);
+}
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  background: var(--glow);
+  z-index: -1;
+}
+
+/* ================== الحاسبة ================== */
+.calculator {
+  width: min(92vw, 380px);
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow-1);
+  border: var(--border-1);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.calculator:hover { transform: translateY(-2px); }
+
+.brand {
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 2px 4px 10px;
+}
+
+/* مُبدّل الثيمات */
+.theme-switcher {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 6px 2px 12px;
+}
+.chip {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  background: var(--btn);
+  color: var(--btn-fg);
+  box-shadow: 0 8px 20px rgba(0,0,0,.15), inset 0 0 0 1px rgba(255,255,255,.06);
+  cursor: pointer;
+  transition: transform .05s ease, filter .15s ease, background .15s ease, box-shadow .2s ease;
+}
+.chip:active { transform: translateY(1px); }
+.chip:hover { filter: brightness(1.08); }
+
+/* شاشة العرض */
+.display {
+  width: 100%;
+  height: 86px;
+  border: 0;
+  background: var(--display-bg);
+  color: var(--fg);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: clamp(26px, 6vw, 34px);
+  text-align: left;
+  direction: ltr;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+}
+.display:focus { outline: 2px solid #5e97ff55; }
+
+.sub-display {
+  margin: 6px 2px 12px;
+  height: 20px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: left;
+  direction: ltr;
+  min-height: 20px;
+}
+
+/* الأزرار */
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  appearance: none;
+  border: none;
+  border-radius: 14px;
+  padding: 16px 0;
+  font-size: 18px;
+  cursor: pointer;
+  background: var(--btn);
+  color: var(--btn-fg);
+  transition: transform .05s ease, filter .15s ease, background .15s ease, box-shadow .2s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.04);
+  user-select: none;
+}
+button:active { transform: translateY(1px); }
+
+/* فئات خاصة */
+.op { background: var(--op); }
+.op:hover { filter: brightness(1.12); }
+
+.accent { background: var(--accent); color: #0b0b0b; }
+.accent:hover { filter: brightness(1.05); }
+
+.danger { background: var(--danger); color: #ffd7d7; }
+.danger:hover { filter: brightness(1.08); }
+
+.wide { grid-column: span 2; }
+
+/* تأثيرات بسيطة */
+button:hover { box-shadow: 0 10px 24px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,255,255,.06); }
+
+/* وضع فاتح/غامق تلقائي عندما لا يكون ثيم محدد */
+@media (prefers-color-scheme: light) {
+  body:not(.theme-glass):not(.theme-neumorph):not(.theme-neon) {
+    background: radial-gradient(1200px 800px at 80% -10%, #dfe6ff, #eef1f7 60%);
+    color: #222;
+  }
+}

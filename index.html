@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>حاسبة بسيطة — HTML/CSS/JS</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="calculator" aria-label="تطبيق آلة حاسبة">
+    <div class="brand"> calculator </div>
+
+    <!-- مُبدّل الثيمات -->
+    <div class="theme-switcher" aria-label="اختيار الثيم">
+      <button data-theme="glass" class="chip">Glass ✨</button>
+      <button data-theme="neumorph" class="chip">Neumorph ☁️</button>
+      <button data-theme="neon" class="chip">Neon ⚡</button>
+    </div>
+
+    <!-- شاشة العرض -->
+    <input id="display" class="display" type="text" value="0" readonly aria-live="polite" />
+    <div id="subDisplay" class="sub-display"></div>
+
+    <!-- الأزرار -->
+    <section class="keys" role="group" aria-label="أزرار الحاسبة">
+      <button class="danger" data-action="clear" title="مسح الكل (Esc)">AC</button>
+      <button data-action="delete" title="حذف خانة واحدة (Backspace)">DEL</button>
+      <button class="op" data-action="percent" title="نسبة مئوية (%)">%</button>
+      <button class="op" data-action="operation" data-op="/" title="قسمة (/)">÷</button>
+
+      <button data-action="number" data-num="7">7</button>
+      <button data-action="number" data-num="8">8</button>
+      <button data-action="number" data-num="9">9</button>
+      <button class="op" data-action="operation" data-op="*" title="ضرب (*)">×</button>
+
+      <button data-action="number" data-num="4">4</button>
+      <button data-action="number" data-num="5">5</button>
+      <button data-action="number" data-num="6">6</button>
+      <button class="op" data-action="operation" data-op="-" title="طرح (-)">−</button>
+
+      <button data-action="number" data-num="1">1</button>
+      <button data-action="number" data-num="2">2</button>
+      <button data-action="number" data-num="3">3</button>
+      <button class="op" data-action="operation" data-op="+" title="جمع (+)">+</button>
+
+      <button data-action="sign" title="تغيير الإشارة (±)">±</button>
+      <button class="wide" data-action="number" data-num="0">0</button>
+      <button data-action="dot" title="فاصلة عشرية (.)">.</button>
+      <button class="accent" data-action="equals" title="يساوي (= أو Enter)">=</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
